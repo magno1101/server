@@ -1,0 +1,24 @@
+
+
+
+.container {
+    background-color: #f0f0f0;
+    border-radius: 16px;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2), -8px -8px 16px rgba(255, 255, 255, 0.5);
+    padding: 24px;
+    text-align: center;
+}
+
+button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.5);
+    padding: 10px 20px;
+    margin: 8px;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    background-color: #f0f0f0;
+}

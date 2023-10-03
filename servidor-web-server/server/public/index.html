@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Página Inicial</title>
+</head>
+<body>
+    <h1>Bem-vindo à Página Inicial</h1>
+    <p>Esta é uma página de exemplo servida pelo servidor Node.js.</p>
+
+    
+    <input type="text" id="textoParaSalvar" placeholder="Digite o texto a ser salvo">
+
+    
+    <button id="botaoSalvar">Salvar Texto</button>
+
+    
+    <button id="botaoLer">Ler Texto</button>
+
+    
+    <div id="resultado"></div>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const botaoSalvar = document.getElementById('botaoSalvar');
+            const botaoLer = document.getElementById('botaoLer');
+            const resultado = document.getElementById('resultado');
+            const textoParaSalvar = document.getElementById('textoParaSalvar');
+
+            botaoSalvar.addEventListener('click', () => {
+                const textoASalvar = textoParaSalvar.value; 
+
+                fetch('http://localhost:8000/api/salvar', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ texto: textoASalvar }),
+                })
+                .then(response => response.text())
+                .then(data => {
+                    resultado.textContent = data;
+                })
+                .catch(error => console.error('Erro:', error));
+            });
+
+            botaoLer.addEventListener('click', () => {
+                fetch('http://localhost:8000/api/ler')
+                .then(response => response.text())
+                .then(data => {
+                    resultado.textContent = data;
+                })
+                .catch(error => console.error('Erro:', error));
+            });
+        });
+    </script>
+</body>
+</html>
